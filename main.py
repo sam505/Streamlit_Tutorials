@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import time
 
 def main():
     data = pd.read_csv("research-and-development-survey-2019-csv.csv")
@@ -10,7 +10,7 @@ def main():
 
     st.dataframe(data_1)
     st.table(data_1.iloc[0:10])
-    st.line_chart(data_1[""])
+    st.line_chart(data_1)
 
     st.json({'foo': 'bar', 'fu': 'ba'})
     st.beta_container()
@@ -38,6 +38,18 @@ def main():
     st.time_input('Time entry')
     st.file_uploader('File uploader')
     st.color_picker('Pick a color')
+
+    st.progress(90)
+    st.spinner()
+    with st.spinner(text='In progress'):
+        time.sleep(5)
+        st.success('Done')
+    st.balloons()
+    st.error('Error message')
+    st.warning('Warning message')
+    st.info('Info message')
+    st.success('Success message')
+    st.exception("e")
 
 
 if __name__ == '__main__':
